@@ -19,10 +19,16 @@
 		<version>2.2.8</version> </parent -->
 
 	<dependencies>
-		<dependency>
+		<!-- dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
 			<version>2.2.8</version>
+			<scope>provided</scope>
+		</dependency-->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
