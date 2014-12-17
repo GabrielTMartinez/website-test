@@ -12,7 +12,8 @@
 	<h3>JSF 2.0 Hello World Example - hello.xhtml</h3>
 	<h:form>
 		<h:inputText value="#{hello.name}"></h:inputText>
-		<h:commandButton value="Welcome Me" action="welcome"></h:commandButton>
+		<h:inputText value="#{hello.pwd}"></h:inputText>
+		<h:commandButton value="TEST" action="#{helloDao.createUser(hello)}"></h:commandButton>
 	</h:form>
 </h:body>
 </html>
