@@ -19,8 +19,8 @@ public class HelloDao extends Dao  {
 		
 		try{
 			createConnection();
-			Statement st = (Statement) getCon().createStatement();
-			st.executeUpdate("INSERT INTO user VALUES (" + this.hello.getName() + "," + this.hello.getPwd() + ");");
+			Statement st = getCon().createStatement();
+			st.executeUpdate("INSERT INTO mein1.user(username, pwd) VALUES (\"" + this.hello.getName() + "\",\"" + this.hello.getPwd() + "\");");
 		}catch(Exception e){
 			e.printStackTrace();
 		}

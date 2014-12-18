@@ -19,7 +19,6 @@ public class Hello implements Serializable {
 	public void printAttrs(){
 		System.out.println(name);
 		System.out.println(pwd);
-		//FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("hello", this);
 	}
 	
 	public String getName() {
