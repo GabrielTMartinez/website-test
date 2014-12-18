@@ -1,11 +1,14 @@
 package dao;
 
-import beans.User;
+import java.sql.Statement;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
-import java.sql.*;
+import beans.User;
 
 @ManagedBean(name="userDao")
 @SessionScoped
@@ -13,6 +16,18 @@ public class UserDao extends Dao  {
 	private static final long serialVersionUID = 1L;
 	
 	private User user;
+	
+	public EntityManagerFactory createEntityManagerFactory(){
+		return Persistence.createEntityManagerFactory("org.hibernate");
+	}
+	
+	public void createUserJPA(User hello){
+		EntityManager entityManager = createEntityManagerFactory().createEntityManager();
+		entityManager.getTransaction().begin();
+		entityManager.persist(hello);
+		entityManager.getTransaction().commit();
+		entityManager.close();
+	}
 	
 	public void createUser(User hello){
 		this.user = hello;

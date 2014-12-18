@@ -4,9 +4,14 @@ import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @ManagedBean(name="user")
 @SessionScoped
+@Entity
+@Table (name="users")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -33,7 +38,8 @@ public class User implements Serializable {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
-
+	
+	@Id
 	public int getUserId() {
 		return userId;
 	}
