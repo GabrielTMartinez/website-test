@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	private int user_id;
+	private int userId;
 	private String userName;
 	//@ManagedProperty(value="#{pwd}")
 	private String pwd;
@@ -34,11 +34,11 @@ public class User implements Serializable {
 		this.pwd = pwd;
 	}
 
-	public int getUser_id() {
-		return user_id;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser_id(int user_id) {
-		this.user_id = user_id;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 }
