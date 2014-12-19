@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Statement;
 
+//import javax.ejb.Stateful;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
@@ -16,13 +17,20 @@ public class UserDao extends Dao  {
 	private static final long serialVersionUID = 1L;
 	
 	private User user;
+	//@PersistenceContext (name="user.entity")
+	private static EntityManager entityManager;
 	
 	public EntityManagerFactory createEntityManagerFactory(){
-		return Persistence.createEntityManagerFactory("org.hibernate");
+		//return Persistence.createEntityManagerFactory("org.hibernate");
+		//return Persistence.createEntityManagerFactory("org.hibernate.jpa.HibernatePersistenceProvider");
+		System.out.println("-----------------------1111111111111---------------------------");
+		return Persistence.createEntityManagerFactory("fucker");
 	}
 	
 	public void createUserJPA(User hello){
-		EntityManager entityManager = createEntityManagerFactory().createEntityManager();
+		System.out.println("-----------------------3333333333333---------------------------");
+		entityManager = createEntityManagerFactory().createEntityManager();
+		System.out.println("-----------------------4444444444444---------------------------");
 		entityManager.getTransaction().begin();
 		entityManager.persist(hello);
 		entityManager.getTransaction().commit();
