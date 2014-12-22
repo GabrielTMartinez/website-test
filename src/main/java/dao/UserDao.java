@@ -2,22 +2,29 @@ package dao;
 
 import java.sql.Statement;
 
-//import javax.ejb.Stateful;
+import javax.annotation.Resource;
+import javax.ejb.Stateful;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 
 import beans.User;
 
 @ManagedBean(name="userDao")
 @SessionScoped
+@Stateful
 public class UserDao extends Dao  {
 	private static final long serialVersionUID = 1L;
 	
 	private User user;
-	//@PersistenceContext (name="user.entity")
+	
+	/*@Resource
+	UserTransaction ut;*/
+	@PersistenceContext (unitName="fucker")
 	private static EntityManager entityManager;
 	
 	public EntityManagerFactory createEntityManagerFactory(){
