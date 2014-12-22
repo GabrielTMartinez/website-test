@@ -16,30 +16,30 @@ import javax.persistence.Table;
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	//private int userId;
-	private String userName;
+	//private int id;
+	private String name;
 	//@ManagedProperty(value="#{pwd}")
-	private String pwd;
+	private char[] password;
 	
 	public User(){
 		
 	}
 	
 	@Column (name="username")
-	public String getUserName() {
-		return userName;
+	public String getName() {
+		return name;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	@Column (name="pwd")
-	public String getPwd() {
-		return pwd;
+	public char[] getPassword() {
+		return password;
 	}
 	
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
+	public void setPassword(char[] password) {
+		this.password = password;
 	}
 	
 	/*@Id

@@ -2,7 +2,6 @@ package dao;
 
 import java.sql.Statement;
 
-import javax.annotation.Resource;
 import javax.ejb.Stateful;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -10,7 +9,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
-import javax.transaction.UserTransaction;
 
 import beans.User;
 
@@ -50,7 +48,7 @@ public class UserDao extends Dao  {
 		try{
 			createConnection();
 			Statement st = getCon().createStatement();
-			st.executeUpdate("INSERT INTO mein1.users(username, pwd) VALUES (\"" + this.user.getUserName() + "\",\"" + this.user.getPwd() + "\");");
+			st.executeUpdate("INSERT INTO mein1.users(username, pwd) VALUES (\"" + this.user.getName() + "\",\"" + (this.user.getPassword()).toString() + "\");");
 		}catch(Exception e){
 			e.printStackTrace();
 		}
