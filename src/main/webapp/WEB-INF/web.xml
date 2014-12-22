@@ -45,7 +45,13 @@
 
 	<!-- Welcome page -->
 	<welcome-file-list>
-		<welcome-file>faces/hello.xhtml</welcome-file>
+		<welcome-file>hello.xhtml</welcome-file>
 	</welcome-file-list>
+
+	<!-- Log4j2 config -->
+	<context-param>
+        <param-name>log4jConfiguration</param-name>
+        <param-value>lo4j2.xml</param-value>
+    </context-param>
 
 </web-app>

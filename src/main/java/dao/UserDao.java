@@ -2,44 +2,47 @@ package dao;
 
 import java.sql.Statement;
 
-import javax.ejb.Stateful;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 
 import beans.User;
 
 @ManagedBean(name="userDao")
 @SessionScoped
-@Stateful
 public class UserDao extends Dao  {
 	private static final long serialVersionUID = 1L;
 	
+	//private static Logger logger = LogManager.getLogger(UserDao.class);
+	
 	private User user;
 	
-	/*@Resource
-	UserTransaction ut;*/
-	@PersistenceContext (unitName="fucker")
-	private static EntityManager entityManager;
-	
-	public EntityManagerFactory createEntityManagerFactory(){
-		//return Persistence.createEntityManagerFactory("org.hibernate");
-		//return Persistence.createEntityManagerFactory("org.hibernate.jpa.HibernatePersistenceProvider");
-		System.out.println("-----------------------1111111111111---------------------------");
-		return Persistence.createEntityManagerFactory("fucker");
-	}
+	//@Resource (mappedName="java:/datasources/mysql56")
+	//UserTransaction ut;
+	//@PersistenceContext (unitName="user-unit", type = PersistenceContextType.EXTENDED)
+	@PersistenceUnit (unitName="user-unit")
+	private EntityManagerFactory emFactory;
+	//@PersistenceContext (unitName="user-unit")
+	//private EntityManager entityManager;
 	
 	public void createUserJPA(User hello){
-		System.out.println("-----------------------3333333333333---------------------------");
-		entityManager = createEntityManagerFactory().createEntityManager();
-		System.out.println("-----------------------4444444444444---------------------------");
-		entityManager.getTransaction().begin();
-		entityManager.persist(hello);
-		entityManager.getTransaction().commit();
-		entityManager.close();
+		try{
+			EntityManager entityManager;
+			//logger.info("Calling method for entity manager factory...");
+			//ut.begin();
+			//emFactory = createEntityManagerFactory();
+			entityManager = emFactory.createEntityManager();
+			//logger.info("Done!");
+			entityManager.getTransaction().begin();
+			entityManager.persist(hello);
+			entityManager.getTransaction().commit();
+			entityManager.close();
+			//ut.commit();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 	
 	public void createUser(User hello){

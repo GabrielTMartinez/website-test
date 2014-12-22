@@ -12,7 +12,7 @@
 	<h3>JSF 2.0 Hello World Example - hello.xhtml</h3>
 	<h:form>
 		<h:inputText value="#{user.name}"></h:inputText>
-		<h:inputText value="#{user.password}"></h:inputText>
+		<h:inputText value="#{user.password}" converter="Char[]Converter"></h:inputText>
 		<h:commandButton value="TEST" action="#{userDao.createUserJPA(user)}"></h:commandButton>
 	</h:form>
 </h:body>

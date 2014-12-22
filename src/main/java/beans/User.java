@@ -6,12 +6,12 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-//import javax.persistence.Id;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 @ManagedBean(name="user")
 @SessionScoped
-@Entity (name="ent_user")
+@Entity (name="user")
 @Table (name="users", schema="mein1")
 public class User implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,10 +21,9 @@ public class User implements Serializable {
 	//@ManagedProperty(value="#{pwd}")
 	private char[] password;
 	
-	public User(){
-		
-	}
+	public User(){}
 	
+	@Id
 	@Column (name="username")
 	public String getName() {
 		return name;
@@ -42,6 +41,10 @@ public class User implements Serializable {
 		this.password = password;
 	}
 	
+	public void setPassword(String password) {
+		this.password = password.toCharArray();
+	}
+
 	/*@Id
 	@Column (name="user_id")
 	public int getUserId() {
