@@ -30,7 +30,7 @@ public class UserDao extends Dao  {
 	public EntityManagerFactory createEntityManagerFactory(){
 		//return Persistence.createEntityManagerFactory("org.hibernate");
 		//return Persistence.createEntityManagerFactory("org.hibernate.jpa.HibernatePersistenceProvider");
-		System.out.println("-----------------------1111111111111---------------------------");
+		System.out.println("-----------------------1111111111111--------------------------");
 		return Persistence.createEntityManagerFactory("fucker");
 	}
 	
