@@ -1,7 +1,5 @@
 package dao;
 
-import java.sql.Statement;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
@@ -15,37 +13,27 @@ import beans.User;
 public class UserDao extends Dao  {
 	private static final long serialVersionUID = 1L;
 	
-	//private static Logger logger = LogManager.getLogger(UserDao.class);
+	//private static Logger logger = LogManager.getLogger("userDao");
 	
-	private User user;
-	
-	//@Resource (mappedName="java:/datasources/mysql56")
-	//UserTransaction ut;
-	//@PersistenceContext (unitName="user-unit", type = PersistenceContextType.EXTENDED)
 	@PersistenceUnit (unitName="user-unit")
 	private EntityManagerFactory emFactory;
-	//@PersistenceContext (unitName="user-unit")
-	//private EntityManager entityManager;
 	
-	public void createUserJPA(User hello){
+	public void createUserJPA(User user){
 		try{
 			EntityManager entityManager;
-			//logger.info("Calling method for entity manager factory...");
-			//ut.begin();
-			//emFactory = createEntityManagerFactory();
+			//logger.info("Creating EntityManager...");
 			entityManager = emFactory.createEntityManager();
 			//logger.info("Done!");
 			entityManager.getTransaction().begin();
-			entityManager.persist(hello);
+			entityManager.persist(user);
 			entityManager.getTransaction().commit();
 			entityManager.close();
-			//ut.commit();
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
 	}
 	
-	public void createUser(User hello){
+	/*public void createUser(User hello){
 		this.user = hello;
 		
 		try{
@@ -55,13 +43,5 @@ public class UserDao extends Dao  {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-	}
-	
-	public User getHello() {
-		return user;
-	}
-
-	public void setHello(User hello) {
-		this.user = hello;
-	}
+	}*/
 }
