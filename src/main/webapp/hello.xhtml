@@ -22,8 +22,8 @@
 	<h:form>
 		<h:inputText value="#{user.name}"></h:inputText>
 		<h:inputText value="#{user.password}" converter="Char[]Converter"></h:inputText>
-		<h:commandButton value="Entrar" action="#{login.checkLogin(user)}"></h:commandButton>
-		<h:outputLabel value="#{login.message} " />
+		<h:commandButton value="Entrar" action="#{userDao.checkLogin(user)}"></h:commandButton>
+		<h:outputLabel value="#{userDao.message} " />
 	</h:form>
 </h:body>
 </html>

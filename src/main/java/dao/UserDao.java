@@ -1,7 +1,7 @@
 package dao;
 
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
@@ -12,11 +12,13 @@ import org.apache.logging.log4j.Logger;
 import beans.User;
 
 @ManagedBean(name="userDao")
-@RequestScoped
+@SessionScoped
 public class UserDao extends Dao  {
 	private static final long serialVersionUID = 1L;
 	
 	private static Logger logger = LogManager.getLogger("userDao");
+	
+	private String message;
 	
 	@PersistenceUnit (unitName="user-unit")
 	private EntityManagerFactory emFactory;
@@ -54,6 +56,24 @@ public class UserDao extends Dao  {
 			ex.printStackTrace();
 		}
 		return sought;
+	}
+	
+	public void checkLogin(User user){
+		User newUser;
+		newUser = this.getUser(user);
+		if (newUser != null) {
+			message = "Login realizado com sucesso!";
+		}else{
+			message = "Login falhou!";
+		}
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
 	}
 	
 	/*public void createUser(User hello){
