@@ -9,7 +9,7 @@ import javax.faces.convert.FacesConverter;
 
 @FacesConverter("Char[]Converter")
 public class CharArrayConverter implements Converter {
-	//@Override
+	
 	public Object getAsObject(FacesContext context, UIComponent component, String newValue) {
 		if (newValue == null) {
 			return newValue;
@@ -17,7 +17,6 @@ public class CharArrayConverter implements Converter {
 		return newValue.toCharArray();
 	}
 
-	//@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		if (value == null) {
 			return null;
