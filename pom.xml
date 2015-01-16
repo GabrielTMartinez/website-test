@@ -39,8 +39,19 @@
 
 	<build>
 		<finalName>website</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.0.2.Final</version>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<!-- this is relative to the pom.xml directory -->
+				<directory>src/main/java/META-INF</directory>
+				<targetPath>META-INF/</targetPath>
+			</resource>
+		</resources>
 	</build>
-
-	<!-- build> <plugins> <plugin> <groupId>org.wildfly.plugins</groupId> <artifactId>wildfly-maven-plugin</artifactId> 
-		<version>1.0.2.Final</version> </plugin> </plugins> </build -->
 </project>
