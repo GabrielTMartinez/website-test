@@ -52,6 +52,11 @@
 				<directory>src/main/java/META-INF</directory>
 				<targetPath>META-INF/</targetPath>
 			</resource>
+			<resource>
+				<!-- this is relative to the pom.xml directory -->
+				<directory>src/main/config</directory>
+				<targetPath>./</targetPath>
+			</resource>
 		</resources>
 	</build>
 </project>
