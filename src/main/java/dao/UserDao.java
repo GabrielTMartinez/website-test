@@ -1,5 +1,7 @@
 package dao;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
@@ -11,11 +13,11 @@ import org.apache.logging.log4j.Logger;
 
 import beans.User;
 
-@ManagedBean(name="userDao")
+@ManagedBean(name="userDaoController")
 @SessionScoped
-public class UserDao extends Dao  {
+public class UserDao implements Serializable  {
 	private static final long serialVersionUID = 1L;
-	
+
 	private static Logger logger = LogManager.getLogger("userDao");
 	
 	private String message;
@@ -23,7 +25,7 @@ public class UserDao extends Dao  {
 	@PersistenceUnit (unitName="user-unit")
 	private EntityManagerFactory emFactory;
 	
-	public void createUserJPA(User user){
+	public void createUser(User user){
 		try{
 			EntityManager entityManager;
 			logger.info("Creating EntityManager...");
